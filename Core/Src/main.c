@@ -330,12 +330,16 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 		display7SEG(led);
 		if (led == 1){
 			led = 2;
+			HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
+			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		}
 		else {
 			led = 1;
+			HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 		}
-		HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
-		HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
+//		HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
+//		HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
 	}
 }
 /* USER CODE END 4 */
