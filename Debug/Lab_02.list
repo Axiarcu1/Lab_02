@@ -1001,9 +1001,9 @@ static void MX_GPIO_Init(void)
 
 08000740 <HAL_TIM_PeriodElapsedCallback>:
 /* USER CODE BEGIN 4 */
-int counter = 50;
+int counter = 25;
 int DOT_counter = 100;
-//int led = 1; //display on segment LEDs
+
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
  8000740:	b580      	push	{r7, lr}
@@ -1041,9 +1041,9 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
  8000774:	681b      	ldr	r3, [r3, #0]
  8000776:	2b00      	cmp	r3, #0
  8000778:	da16      	bge.n	80007a8 <HAL_TIM_PeriodElapsedCallback+0x68>
-		counter = 50;
+		counter = 25;
  800077a:	4b0d      	ldr	r3, [pc, #52]	; (80007b0 <HAL_TIM_PeriodElapsedCallback+0x70>)
- 800077c:	2232      	movs	r2, #50	; 0x32
+ 800077c:	2219      	movs	r2, #25
  800077e:	601a      	str	r2, [r3, #0]
 		HAL_GPIO_TogglePin(LED_RED_GPIO_Port ,LED_RED_Pin);
  8000780:	2120      	movs	r1, #32
