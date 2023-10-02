@@ -282,7 +282,11 @@ int main(void)
 			  hour = 0;
 		  }
 		  updateClockBuffer();
-		  setTimer0(1000);
+		  if (index_led >= MAX_LED) {
+			  index_led = 0;
+		  }
+		  update7SEG(index_led++);
+		  setTimer0(100);
 	  }
 	  if (timer1_flag == 1){
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin); //toggle DOT leds
@@ -420,27 +424,24 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 25;
+//int counter = 25;
 //int DOT_counter = 100;
 
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 	timer_run();
 
-	counter--;
+//	counter--;
 //	DOT_counter--;
 //	if (DOT_counter < 0){
 //		DOT_counter = 100;
 //		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 //	}
-	if (counter < 0){
-		counter = 25;
-		HAL_GPIO_TogglePin(LED_RED_GPIO_Port ,LED_RED_Pin);
-		if (index_led >= MAX_LED) {
-			index_led = 0;
-		}
-		update7SEG(index_led++);
-	}
+//	if (counter < 0){
+//		counter = 25;
+//		HAL_GPIO_TogglePin(LED_RED_GPIO_Port ,LED_RED_Pin);
+//
+//	}
 }
 /* USER CODE END 4 */
 
